@@ -490,7 +490,7 @@
     if (CGRectEqualToRect(rect, CGRectZero)) {
         JDStatusBarStyle *style = self.activeStyle ?: self.defaultStyle;
         if (style.showEvenStatusBarHidden) {
-            rect = CGRectMake(0, 0, [UIApplication sharedApplication].keyWindow.frame.size.width, 20);
+            rect = [[UIApplication sharedApplication] statusBarFrame];
         }
     }
   CGFloat width = MAX(rect.size.width, rect.size.height);
@@ -621,11 +621,11 @@
 - (UIView*)hitTest:(CGPoint)point withEvent:(UIEvent *)event{
     UIView *result = [super hitTest:point withEvent:event];
     if ([JDStatusBarNotification sharedInstance].topBar.isUserInteractionEnabled) {
-        CGRect statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
+        CGRect statusBarFrame = [JDStatusBarNotification sharedInstance].topBar.frame;
         if (CGRectEqualToRect(statusBarFrame, CGRectZero)) {
             JDStatusBarStyle *style = [JDStatusBarNotification sharedInstance].activeStyle ?: [JDStatusBarNotification sharedInstance].defaultStyle;
             if (style.showEvenStatusBarHidden) {
-                statusBarFrame = CGRectMake(0, 0, [UIApplication sharedApplication].keyWindow.frame.size.width, 20);
+                statusBarFrame = [[UIApplication sharedApplication] statusBarFrame];
             }
         }
         if (point.y >= statusBarFrame.origin.y &&
