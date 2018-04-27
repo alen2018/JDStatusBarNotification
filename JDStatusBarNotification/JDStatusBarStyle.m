@@ -30,14 +30,15 @@ NSString *const JDStatusBarStyleDark    = @"JDStatusBarStyleDark";
     style.progressBarHeight = self.progressBarHeight;
     style.progressBarPosition = self.progressBarPosition;
     style.showEvenStatusBarHidden = self.showEvenStatusBarHidden;
-    return style;
+
+  return style;
 }
 
 + (NSArray*)allDefaultStyleIdentifier;
 {
-    return @[JDStatusBarStyleError, JDStatusBarStyleWarning,
-             JDStatusBarStyleSuccess, JDStatusBarStyleMatrix,
-             JDStatusBarStyleDark];
+  return @[JDStatusBarStyleError, JDStatusBarStyleWarning,
+           JDStatusBarStyleSuccess, JDStatusBarStyleMatrix,
+           JDStatusBarStyleDark];
 }
 
 + (JDStatusBarStyle*)defaultStyleWithName:(NSString*)styleName;
